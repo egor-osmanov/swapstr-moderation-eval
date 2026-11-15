@@ -1,5 +1,6 @@
 """Score the production keyword filter on dataset/listings.jsonl."""
 
+import argparse
 import json
 from collections import defaultdict
 from pathlib import Path
@@ -122,6 +123,9 @@ def print_report(report):
         print_block(f"  {name}", block)
     print("\nRecall by gold category")
     for name, block in report["recall_by_gold_category"].items():
+        if block is None:
+            print(f"  {name}: n=0")
+            continue
         print_block(f"  {name}", block)
     print("\nFalse negatives")
     for row in report["all"]["false_negatives"]:
@@ -138,14 +142,30 @@ def print_report(report):
         )
 
 
-def main():
+def main(argv=None):
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--listings", default=str(LISTINGS))
+    parser.add_argument("--output", default=None)
+    args = parser.parse_args(argv)
+    listings_path = Path(args.listings)
+    if not listings_path.is_absolute():
+        listings_path = ROOT / listings_path
+    if args.output:
+        out = Path(args.output)
+        if not out.is_absolute():
+            out = ROOT / out
+    elif listings_path.resolve() == LISTINGS.resolve():
+        out = OUT
+    else:
+        out = ROOT / "results" / f"keyword_{listings_path.stem}.json"
     policy = load_policy(POLICY)
-    rows = load_listings(LISTINGS)
+    rows = load_listings(listings_path)
     report = build_report(rows, policy)
-    OUT.parent.mkdir(exist_ok=True)
-    OUT.write_text(json.dumps(report, indent=2) + "\n")
+    out.parent.mkdir(exist_ok=True)
+    out.write_text(json.dumps(report, indent=2) + "\n")
     print_report(report)
-    print(f"\nwrote {OUT}")
+    print(f"\nwrote {out}")
+    return 0
 
 
 if __name__ == "__main__":

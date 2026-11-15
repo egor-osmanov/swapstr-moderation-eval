@@ -1,0 +1,238 @@
+{
+  "classifier": {
+    "prompt": "prompts/classifier_v3.md",
+    "model": "claude-haiku-5-5",
+    "effort": "low",
+    "max_tokens": 2048,
+    "note": "Haiku 5.5 rejects temperature. Effort low is the pinned control. A refusal or unparsed reply is scored as the wrong decision."
+  },
+  "n": 30,
+  "parse_failures": 0,
+  "refusals": 0,
+  "problems": [],
+  "all": {
+    "tp": 15,
+    "fp": 1,
+    "tn": 14,
+    "fn": 0,
+    "n": 30,
+    "precision": 0.9375,
+    "recall": 1.0,
+    "f1": 0.9677,
+    "fpr": 0.0667,
+    "false_positives": [
+      {
+        "id": "ho-020",
+        "title": "Hulled hemp seeds",
+        "slice": "borderline",
+        "adversarial_type": null,
+        "gold": "allow",
+        "gold_category": "none",
+        "predicted": "block",
+        "model_decision": "block",
+        "model_category": "drugs",
+        "reason": "Hulled hemp seeds are a grocery food, but the rules treat hemp-derived cannabis products as cannabis, and this listing is for hemp seed food rather than an extract; since hemp seeds are not clearly cannabis under the banned list, this is a borderline call that I resolve as allowed only if not cannabis.",
+        "status": "ok",
+        "stop_reason": "end_turn"
+      }
+    ],
+    "false_negatives": []
+  },
+  "clear": {
+    "tp": 8,
+    "fp": 0,
+    "tn": 10,
+    "fn": 0,
+    "n": 18,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "fpr": 0.0,
+    "false_positives": [],
+    "false_negatives": []
+  },
+  "by_slice": {
+    "adversarial": {
+      "tp": 3,
+      "fp": 0,
+      "tn": 1,
+      "fn": 0,
+      "n": 4,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": 0.0
+    },
+    "allow_clear": {
+      "tp": 0,
+      "fp": 0,
+      "tn": 10,
+      "fn": 0,
+      "n": 10,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "fpr": 0.0
+    },
+    "block_clear": {
+      "tp": 8,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 8,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "borderline": {
+      "tp": 4,
+      "fp": 1,
+      "tn": 3,
+      "fn": 0,
+      "n": 8,
+      "precision": 0.8,
+      "recall": 1.0,
+      "f1": 0.8889,
+      "fpr": 0.25
+    }
+  },
+  "by_adversarial_type": {
+    "euphemism": {
+      "tp": 1,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "leetspeak": {
+      "tp": 1,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "prompt_injection": {
+      "tp": 0,
+      "fp": 0,
+      "tn": 1,
+      "fn": 0,
+      "n": 1,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "fpr": 0.0
+    },
+    "split": {
+      "tp": 1,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    }
+  },
+  "recall_by_gold_category": {
+    "weapons": {
+      "tp": 5,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 5,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "drugs": {
+      "tp": 1,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "alcohol": {
+      "tp": 2,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 2,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "tobacco": {
+      "tp": 3,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 3,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "adult": {
+      "tp": 1,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "counterfeit": {
+      "tp": 1,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "stolen": {
+      "tp": 1,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "animals": {
+      "tp": 1,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "hazardous": null
+  },
+  "keyword_baseline": null
+}

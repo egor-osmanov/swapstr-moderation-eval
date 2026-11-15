@@ -1,0 +1,364 @@
+{
+  "baseline": {
+    "name": "production_keyword_filter",
+    "source": "swapster-enhanced/src/utils/prohibitedItems.js isProhibitedItem",
+    "rule": "Lowercase title and description, first substring hit in policy order, any hit is block."
+  },
+  "n": 30,
+  "all": {
+    "tp": 7,
+    "fp": 2,
+    "tn": 13,
+    "fn": 8,
+    "n": 30,
+    "precision": 0.7778,
+    "recall": 0.4667,
+    "f1": 0.5833,
+    "fpr": 0.1333,
+    "false_positives": [
+      {
+        "id": "ho-019",
+        "title": "Slice of bakery rum cake",
+        "slice": "borderline",
+        "adversarial_type": null,
+        "gold": "allow",
+        "gold_category": "none",
+        "predicted": "block",
+        "keyword": "rum",
+        "matched_category": "alcohol"
+      },
+      {
+        "id": "ho-026",
+        "title": "Foam pirate sword",
+        "slice": "borderline",
+        "adversarial_type": null,
+        "gold": "allow",
+        "gold_category": "none",
+        "predicted": "block",
+        "keyword": "sword",
+        "matched_category": "weapons"
+      }
+    ],
+    "false_negatives": [
+      {
+        "id": "ho-013",
+        "title": "Sealed pack of cigarettes",
+        "slice": "block_clear",
+        "adversarial_type": null,
+        "gold": "block",
+        "gold_category": "tobacco",
+        "predicted": "allow",
+        "keyword": null,
+        "matched_category": null
+      },
+      {
+        "id": "ho-017",
+        "title": "Box of sparklers",
+        "slice": "block_clear",
+        "adversarial_type": null,
+        "gold": "block",
+        "gold_category": "weapons",
+        "predicted": "allow",
+        "keyword": null,
+        "matched_category": null
+      },
+      {
+        "id": "ho-018",
+        "title": "Unopened nicotine pouches",
+        "slice": "block_clear",
+        "adversarial_type": null,
+        "gold": "block",
+        "gold_category": "tobacco",
+        "predicted": "allow",
+        "keyword": null,
+        "matched_category": null
+      },
+      {
+        "id": "ho-024",
+        "title": "Black lace corset",
+        "slice": "borderline",
+        "adversarial_type": null,
+        "gold": "block",
+        "gold_category": "adult",
+        "predicted": "allow",
+        "keyword": null,
+        "matched_category": null
+      },
+      {
+        "id": "ho-025",
+        "title": "Bottle of cooking sherry",
+        "slice": "borderline",
+        "adversarial_type": null,
+        "gold": "block",
+        "gold_category": "alcohol",
+        "predicted": "allow",
+        "keyword": null,
+        "matched_category": null
+      },
+      {
+        "id": "ho-027",
+        "title": "Serrated bread k nife",
+        "slice": "adversarial",
+        "adversarial_type": "split",
+        "gold": "block",
+        "gold_category": "weapons",
+        "predicted": "allow",
+        "keyword": null,
+        "matched_category": null
+      },
+      {
+        "id": "ho-028",
+        "title": "Nic0tine v@pe cartridge",
+        "slice": "adversarial",
+        "adversarial_type": "leetspeak",
+        "gold": "block",
+        "gold_category": "tobacco",
+        "predicted": "allow",
+        "keyword": null,
+        "matched_category": null
+      },
+      {
+        "id": "ho-030",
+        "title": "Eighth of flower",
+        "slice": "adversarial",
+        "adversarial_type": "euphemism",
+        "gold": "block",
+        "gold_category": "drugs",
+        "predicted": "allow",
+        "keyword": null,
+        "matched_category": null
+      }
+    ]
+  },
+  "clear": {
+    "tp": 5,
+    "fp": 0,
+    "tn": 10,
+    "fn": 3,
+    "n": 18,
+    "precision": 1.0,
+    "recall": 0.625,
+    "f1": 0.7692,
+    "fpr": 0.0,
+    "false_positives": [],
+    "false_negatives": [
+      {
+        "id": "ho-013",
+        "title": "Sealed pack of cigarettes",
+        "slice": "block_clear",
+        "adversarial_type": null,
+        "gold": "block",
+        "gold_category": "tobacco",
+        "predicted": "allow",
+        "keyword": null,
+        "matched_category": null
+      },
+      {
+        "id": "ho-017",
+        "title": "Box of sparklers",
+        "slice": "block_clear",
+        "adversarial_type": null,
+        "gold": "block",
+        "gold_category": "weapons",
+        "predicted": "allow",
+        "keyword": null,
+        "matched_category": null
+      },
+      {
+        "id": "ho-018",
+        "title": "Unopened nicotine pouches",
+        "slice": "block_clear",
+        "adversarial_type": null,
+        "gold": "block",
+        "gold_category": "tobacco",
+        "predicted": "allow",
+        "keyword": null,
+        "matched_category": null
+      }
+    ]
+  },
+  "by_slice": {
+    "adversarial": {
+      "tp": 0,
+      "fp": 0,
+      "tn": 1,
+      "fn": 3,
+      "n": 4,
+      "precision": null,
+      "recall": 0.0,
+      "f1": null,
+      "fpr": 0.0
+    },
+    "allow_clear": {
+      "tp": 0,
+      "fp": 0,
+      "tn": 10,
+      "fn": 0,
+      "n": 10,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "fpr": 0.0
+    },
+    "block_clear": {
+      "tp": 5,
+      "fp": 0,
+      "tn": 0,
+      "fn": 3,
+      "n": 8,
+      "precision": 1.0,
+      "recall": 0.625,
+      "f1": 0.7692,
+      "fpr": null
+    },
+    "borderline": {
+      "tp": 2,
+      "fp": 2,
+      "tn": 2,
+      "fn": 2,
+      "n": 8,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "fpr": 0.5
+    }
+  },
+  "by_adversarial_type": {
+    "euphemism": {
+      "tp": 0,
+      "fp": 0,
+      "tn": 0,
+      "fn": 1,
+      "n": 1,
+      "precision": null,
+      "recall": 0.0,
+      "f1": null,
+      "fpr": null
+    },
+    "leetspeak": {
+      "tp": 0,
+      "fp": 0,
+      "tn": 0,
+      "fn": 1,
+      "n": 1,
+      "precision": null,
+      "recall": 0.0,
+      "f1": null,
+      "fpr": null
+    },
+    "prompt_injection": {
+      "tp": 0,
+      "fp": 0,
+      "tn": 1,
+      "fn": 0,
+      "n": 1,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "fpr": 0.0
+    },
+    "split": {
+      "tp": 0,
+      "fp": 0,
+      "tn": 0,
+      "fn": 1,
+      "n": 1,
+      "precision": null,
+      "recall": 0.0,
+      "f1": null,
+      "fpr": null
+    }
+  },
+  "recall_by_gold_category": {
+    "weapons": {
+      "tp": 3,
+      "fp": 0,
+      "tn": 0,
+      "fn": 2,
+      "n": 5,
+      "precision": 1.0,
+      "recall": 0.6,
+      "f1": 0.75,
+      "fpr": null
+    },
+    "drugs": {
+      "tp": 0,
+      "fp": 0,
+      "tn": 0,
+      "fn": 1,
+      "n": 1,
+      "precision": null,
+      "recall": 0.0,
+      "f1": null,
+      "fpr": null
+    },
+    "alcohol": {
+      "tp": 1,
+      "fp": 0,
+      "tn": 0,
+      "fn": 1,
+      "n": 2,
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6667,
+      "fpr": null
+    },
+    "tobacco": {
+      "tp": 0,
+      "fp": 0,
+      "tn": 0,
+      "fn": 3,
+      "n": 3,
+      "precision": null,
+      "recall": 0.0,
+      "f1": null,
+      "fpr": null
+    },
+    "adult": {
+      "tp": 0,
+      "fp": 0,
+      "tn": 0,
+      "fn": 1,
+      "n": 1,
+      "precision": null,
+      "recall": 0.0,
+      "f1": null,
+      "fpr": null
+    },
+    "counterfeit": {
+      "tp": 1,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "stolen": {
+      "tp": 1,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "animals": {
+      "tp": 1,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "hazardous": null
+  },
+  "category_mismatches_on_true_positives": []
+}

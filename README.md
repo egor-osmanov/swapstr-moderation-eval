@@ -12,6 +12,32 @@ The headline result is prompt v2 on Claude Haiku 5.5. On the 130 clear listings 
 
 Block is the positive class. A resume line that matches these numbers: built an evaluation harness for Swapstr listing moderation, 180 labeled listings, and measured a Claude classifier against the production keyword filter on precision, recall, and false-positive rate.
 
+Re-score the published numbers with `python -m src.rescore`. That reruns the keyword filter, Haiku prompt v1, and Haiku prompt v2 from the saved replies, then checks the clear-set floors. It does not call the API.
+
+## Limitations
+
+One person wrote the policy, the 180 listings, and the labels. There is no second annotator. `dataset/heldout.jsonl` is 30 listings written after prompts v1, v2, and v3 were frozen. Those rows are not part of the 180 and not part of the regression gate. The prompts were not edited after this file was scored.
+
+Several scores on the 180 are 100%. The clear set is 130 rows, so one more mistake moves recall by about 1.7 points and the false-positive rate by about 1.4 points. Prompt v1 is 100% because that prompt states every exception. Prompt v3 is 100% because four lines were added for the six misses on this same file. The headline comparison is prompt v2: 98.3% recall, the same as the keyword filter, with the false-positive rate at 0% instead of 28.6%.
+
+The harness scores listing text only. Swapstr's photo check is a separate Google Vision gate and is not in the table.
+
+## Held-out, 30 listings
+
+Same Haiku model, frozen prompts. Scores are in `results/heldout_classifier_v2.json` and `results/heldout_classifier_v3.json`. The keyword filter on this file is in `results/keyword_heldout.json`.
+
+| All 30 | Precision | Recall | False-positive rate |
+|---|---|---|---|
+| Keyword filter | 77.8% | 46.7% | 13.3% |
+| Claude, prompt v2 | 100% | 73.3% | 0% |
+| Claude, prompt v3 | 93.8% | 100% | 6.7% |
+
+On the 18 clear rows, v2 recall is 87.5% and v3 recall is 100%. Both have a 0% false-positive rate there. Thirty rows is still a small file: one mistake moves the all-set false-positive rate by about 6.7 points.
+
+Prompt v2 allowed four bans: a paring knife, a bread knife, the same bread knife with the word split by a space, and a lace corset. It allowed the rum cake, the hemp seeds, the swimsuit, and the foam sword, and it blocked the machete, the cooking sherry, and the cannabis named only as flower.
+
+Prompt v3 caught all 15 bans, including the split knife and the corset. Its one false positive is the hulled hemp seeds (`ho-020`), which it labeled drugs. The decision field says block. The reason text argues that the seeds are food and then says it would allow them. The score uses the decision field.
+
 ## What the follow-up runs showed
 
 Prompt v3 is prompt v2 plus four rules for the six misses above: knives, hatchets, axes, and wood-splitting tools are weapons; CBD and hemp CBD are cannabis; lingerie is adult content; a grocery sauce made with liquor is food, not a drink. Same Haiku model, same 180 labels. Scores are in `results/claude_classifier_v3.json`.
@@ -31,8 +57,6 @@ The same unchanged v2 prompt on `claude-sonnet-5-5` is in `results/claude_classi
 | All 180 | 100% | 91.8% | 0% |
 
 Sonnet allowed the vodka sauce, which Haiku had blocked, and still allowed the other five v2 misses. It also allowed three borderline listings Haiku v2 blocked: a decorative wall sword (`lst-119`), a retractable box cutter (`lst-123`), and a Rolex-style homage watch (`lst-133`). On clear listings the only miss is the same lingerie row. No parse failures and no refusals.
-
-This harness is text only. Swapstr's photo check is a separate Google Vision gate and is not scored here.
 
 The regression gate re-scores the saved replies. It does not call Claude. Claude's clear-set recall must stay at or above 98%, and its clear-set false-positive rate must stay at or below 1%. The keyword filter is held to a 30% false-positive ceiling because its measured rate on this file is 28.6%.
 

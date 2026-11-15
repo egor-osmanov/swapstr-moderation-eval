@@ -110,7 +110,20 @@ def headline(keyword_path):
     }
 
 
-def build_report(annotated, policy, prompt_path, model):
+def output_path(prompt_path, model, listings_path, explicit=None):
+    if explicit:
+        path = Path(explicit)
+        return path if path.is_absolute() else ROOT / path
+    if listings_path.resolve() == LISTINGS.resolve():
+        return result_path(prompt_path, model)
+    if model == MODEL:
+        name = f"{listings_path.stem}_{prompt_path.stem}.json"
+    else:
+        name = f"{listings_path.stem}_{prompt_path.stem}_{model}.json"
+    return ROOT / "results" / name
+
+
+def build_report(annotated, policy, prompt_path, model, keyword_path=KEYWORD_RESULTS):
     clear = [row for row in annotated if row["slice"] in {"allow_clear", "block_clear"}]
     problems = [row for row in annotated if row["status"] != "ok"]
     return {
@@ -133,7 +146,7 @@ def build_report(annotated, policy, prompt_path, model):
             "adversarial_type",
         ),
         "recall_by_gold_category": category_recall(annotated, policy["categories"]),
-        "keyword_baseline": headline(KEYWORD_RESULTS),
+        "keyword_baseline": headline(keyword_path) if keyword_path else None,
     }
 
 
@@ -149,15 +162,20 @@ def main(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument("prompt", nargs="?", default=str(PROMPT_PATH))
     parser.add_argument("--model", default=MODEL)
+    parser.add_argument("--listings", default=str(LISTINGS))
+    parser.add_argument("--output", default=None)
     args = parser.parse_args(argv)
     prompt_path = Path(args.prompt)
     if not prompt_path.is_absolute():
         prompt_path = ROOT / prompt_path
+    listings_path = Path(args.listings)
+    if not listings_path.is_absolute():
+        listings_path = ROOT / listings_path
     system = load_system_prompt(prompt_path)
-    rows = load_listings(LISTINGS)
+    rows = load_listings(listings_path)
     folder = cache_dir(system, args.model)
     folder.mkdir(parents=True, exist_ok=True)
-    out = result_path(prompt_path, args.model)
+    out = output_path(prompt_path, args.model, listings_path, args.output)
     missing = [row for row in rows if not (folder / f"{row['id']}.json").exists()]
     api_key = os.environ.get("ANTHROPIC_API_KEY")
     if missing and not api_key:
@@ -174,7 +192,8 @@ def main(argv=None):
         if index == 1 or index % 20 == 0 or index == len(rows):
             print(f"{index}/{len(rows)} {row['id']} {parsed['status']} {parsed['decision']}")
     policy = load_policy(POLICY)
-    report = build_report(annotate(rows, records), policy, prompt_path, args.model)
+    keyword_path = KEYWORD_RESULTS if listings_path.resolve() == LISTINGS.resolve() else None
+    report = build_report(annotate(rows, records), policy, prompt_path, args.model, keyword_path)
     out.write_text(json.dumps(report, indent=2) + "\n")
     print_block(f"{args.model}, all listings", report["all"])
     print_block(f"{args.model}, clear listings only", report["clear"])

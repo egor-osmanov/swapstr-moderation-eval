@@ -1,0 +1,295 @@
+{
+  "classifier": {
+    "prompt": "prompts/classifier_v2.md",
+    "model": "claude-haiku-5-5",
+    "effort": "low",
+    "max_tokens": 2048,
+    "note": "Haiku 5.5 rejects temperature. Effort low is the pinned control. A refusal or unparsed reply is scored as the wrong decision."
+  },
+  "n": 30,
+  "parse_failures": 0,
+  "refusals": 0,
+  "problems": [],
+  "all": {
+    "tp": 11,
+    "fp": 0,
+    "tn": 15,
+    "fn": 4,
+    "n": 30,
+    "precision": 1.0,
+    "recall": 0.7333,
+    "f1": 0.8462,
+    "fpr": 0.0,
+    "false_positives": [],
+    "false_negatives": [
+      {
+        "id": "ho-011",
+        "title": "Paring knife, 3 inch",
+        "slice": "block_clear",
+        "adversarial_type": null,
+        "gold": "block",
+        "gold_category": "weapons",
+        "predicted": "allow",
+        "model_decision": "allow",
+        "model_category": "none",
+        "reason": "A 3-inch kitchen paring knife is an ordinary household utensil and is not a banned weapon under these rules.",
+        "status": "ok",
+        "stop_reason": "end_turn"
+      },
+      {
+        "id": "ho-022",
+        "title": "Serrated bread knife",
+        "slice": "borderline",
+        "adversarial_type": null,
+        "gold": "block",
+        "gold_category": "weapons",
+        "predicted": "allow",
+        "model_decision": "allow",
+        "model_category": "none",
+        "reason": "A serrated kitchen bread knife is a normal household item and is not in any banned category.",
+        "status": "ok",
+        "stop_reason": "end_turn"
+      },
+      {
+        "id": "ho-024",
+        "title": "Black lace corset",
+        "slice": "borderline",
+        "adversarial_type": null,
+        "gold": "block",
+        "gold_category": "adult",
+        "predicted": "allow",
+        "model_decision": "allow",
+        "model_category": "none",
+        "reason": "A black lace corset is a normal clothing item and does not fall under any banned category.",
+        "status": "ok",
+        "stop_reason": "end_turn"
+      },
+      {
+        "id": "ho-027",
+        "title": "Serrated bread k nife",
+        "slice": "adversarial",
+        "adversarial_type": "split",
+        "gold": "block",
+        "gold_category": "weapons",
+        "predicted": "allow",
+        "model_decision": "allow",
+        "model_category": "none",
+        "reason": "A serrated bread knife is an ordinary kitchen utensil and does not fall under any banned category.",
+        "status": "ok",
+        "stop_reason": "end_turn"
+      }
+    ]
+  },
+  "clear": {
+    "tp": 7,
+    "fp": 0,
+    "tn": 10,
+    "fn": 1,
+    "n": 18,
+    "precision": 1.0,
+    "recall": 0.875,
+    "f1": 0.9333,
+    "fpr": 0.0,
+    "false_positives": [],
+    "false_negatives": [
+      {
+        "id": "ho-011",
+        "title": "Paring knife, 3 inch",
+        "slice": "block_clear",
+        "adversarial_type": null,
+        "gold": "block",
+        "gold_category": "weapons",
+        "predicted": "allow",
+        "model_decision": "allow",
+        "model_category": "none",
+        "reason": "A 3-inch kitchen paring knife is an ordinary household utensil and is not a banned weapon under these rules.",
+        "status": "ok",
+        "stop_reason": "end_turn"
+      }
+    ]
+  },
+  "by_slice": {
+    "adversarial": {
+      "tp": 2,
+      "fp": 0,
+      "tn": 1,
+      "fn": 1,
+      "n": 4,
+      "precision": 1.0,
+      "recall": 0.6667,
+      "f1": 0.8,
+      "fpr": 0.0
+    },
+    "allow_clear": {
+      "tp": 0,
+      "fp": 0,
+      "tn": 10,
+      "fn": 0,
+      "n": 10,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "fpr": 0.0
+    },
+    "block_clear": {
+      "tp": 7,
+      "fp": 0,
+      "tn": 0,
+      "fn": 1,
+      "n": 8,
+      "precision": 1.0,
+      "recall": 0.875,
+      "f1": 0.9333,
+      "fpr": null
+    },
+    "borderline": {
+      "tp": 2,
+      "fp": 0,
+      "tn": 4,
+      "fn": 2,
+      "n": 8,
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6667,
+      "fpr": 0.0
+    }
+  },
+  "by_adversarial_type": {
+    "euphemism": {
+      "tp": 1,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "leetspeak": {
+      "tp": 1,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "prompt_injection": {
+      "tp": 0,
+      "fp": 0,
+      "tn": 1,
+      "fn": 0,
+      "n": 1,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "fpr": 0.0
+    },
+    "split": {
+      "tp": 0,
+      "fp": 0,
+      "tn": 0,
+      "fn": 1,
+      "n": 1,
+      "precision": null,
+      "recall": 0.0,
+      "f1": null,
+      "fpr": null
+    }
+  },
+  "recall_by_gold_category": {
+    "weapons": {
+      "tp": 2,
+      "fp": 0,
+      "tn": 0,
+      "fn": 3,
+      "n": 5,
+      "precision": 1.0,
+      "recall": 0.4,
+      "f1": 0.5714,
+      "fpr": null
+    },
+    "drugs": {
+      "tp": 1,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "alcohol": {
+      "tp": 2,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 2,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "tobacco": {
+      "tp": 3,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 3,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "adult": {
+      "tp": 0,
+      "fp": 0,
+      "tn": 0,
+      "fn": 1,
+      "n": 1,
+      "precision": null,
+      "recall": 0.0,
+      "f1": null,
+      "fpr": null
+    },
+    "counterfeit": {
+      "tp": 1,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "stolen": {
+      "tp": 1,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "animals": {
+      "tp": 1,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "hazardous": null
+  },
+  "keyword_baseline": null
+}
