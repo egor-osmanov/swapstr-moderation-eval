@@ -12,13 +12,31 @@ The headline result is prompt v2 on Claude Haiku 5.5. On the 130 clear listings 
 
 Block is the positive class. A resume line that matches these numbers: built an evaluation harness for Swapstr listing moderation, 180 labeled listings, and measured a Claude classifier against the production keyword filter on precision, recall, and false-positive rate.
 
-## What I would test next
+## What the follow-up runs showed
 
-Name lingerie and edged tools in the short prompt and rerun only the six v2 misses, to see which failures were missing rules rather than model errors. Run the same v2 prompt on a second model. This harness is text only. Swapstr's photo check is a separate Google Vision gate and is not scored here.
+Prompt v3 is prompt v2 plus four rules for the six misses above: knives, hatchets, axes, and wood-splitting tools are weapons; CBD and hemp CBD are cannabis; lingerie is adult content; a grocery sauce made with liquor is food, not a drink. Same Haiku model, same 180 labels. Scores are in `results/claude_classifier_v3.json`.
+
+| Set | Precision | Recall | False-positive rate |
+|---|---|---|---|
+| Clear only (130) | 100% | 100% | 0% |
+| All 180 | 100% | 100% | 0% |
+
+All six v2 misses flipped to the gold label, and every block got the right category. Those failures were missing rules. v3 was written from the misses on this same file, so the 100% shows the model followed the added lines. It is not a new held-out test.
+
+The same unchanged v2 prompt on `claude-sonnet-5-5` is in `results/claude_classifier_v2_claude-sonnet-5-5.json`.
+
+| Set | Precision | Recall | False-positive rate |
+|---|---|---|---|
+| Clear only (130) | 100% | 98.3% | 0% |
+| All 180 | 100% | 91.8% | 0% |
+
+Sonnet allowed the vodka sauce, which Haiku had blocked, and still allowed the other five v2 misses. It also allowed three borderline listings Haiku v2 blocked: a decorative wall sword (`lst-119`), a retractable box cutter (`lst-123`), and a Rolex-style homage watch (`lst-133`). On clear listings the only miss is the same lingerie row. No parse failures and no refusals.
+
+This harness is text only. Swapstr's photo check is a separate Google Vision gate and is not scored here.
 
 The regression gate re-scores the saved replies. It does not call Claude. Claude's clear-set recall must stay at or above 98%, and its clear-set false-positive rate must stay at or below 1%. The keyword filter is held to a 30% false-positive ceiling because its measured rate on this file is 28.6%.
 
-Status: 180 listings scored. Keyword baseline, Claude prompt v1, and Claude prompt v2 results are in `results/`.
+Status: 180 listings scored. Keyword baseline, Claude prompts v1–v3 on Haiku, and prompt v2 on Sonnet are in `results/`.
 
 `dataset/check_dataset.py` checks that the file is well formed and shows where the production keyword list hits or misses. It is not the model scorer.
 

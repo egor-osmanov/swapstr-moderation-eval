@@ -19,6 +19,15 @@ class PromptTest(unittest.TestCase):
         self.assertNotIn("blind box", prompt)
         self.assertNotIn("culinary", prompt)
 
+    def test_v3_names_the_six_missing_rules_without_listing_titles(self):
+        prompt = load_system_prompt(ROOT / "prompts" / "classifier_v3.md")
+        self.assertIn("Lingerie", prompt)
+        self.assertIn("wood-splitting tools", prompt)
+        self.assertIn("hemp CBD", prompt)
+        self.assertIn("grocery food", prompt)
+        self.assertNotIn("Wusthof", prompt)
+        self.assertNotIn("vodka pasta", prompt)
+
     def test_listing_message_is_title_and_description(self):
         message = listing_message("Oak chair", "One leg is loose.")
         self.assertEqual(message, "Title: Oak chair\nDescription: One leg is loose.")

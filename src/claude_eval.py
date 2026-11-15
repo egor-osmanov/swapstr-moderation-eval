@@ -9,6 +9,7 @@ import urllib.error
 import urllib.request
 
 MODEL = "claude-haiku-5-5"
+SONNET = "claude-sonnet-5-5"
 EFFORT = "low"
 MAX_TOKENS = 2048
 ANTHROPIC_VERSION = "2026-10-21"
