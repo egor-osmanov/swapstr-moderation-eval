@@ -2,7 +2,9 @@
 
 Offline test suite for Swapstr listing text. It does not call the app, and the app does not call it.
 
-The headline result is prompt v2 on Claude Haiku 5.5. On the 130 clear listings it matches the production keyword filter's 98.3% recall and cuts the false-positive rate from 28.6% to 0%. Prompt v1 scores 100% because that prompt states every exception. The keyword filter still misses disguised wording and blocks ordinary items that merely contain a banned substring.
+## Findings
+
+On 130 clear listings, prompt v2 on Claude Haiku matches the production keyword filter's 98.3% recall and cuts the false-positive rate from 28.6% to 0%. On 30 listings written after the prompts were frozen, that same prompt's recall is 73.3%, at a 0% false-positive rate. Prompt v3, written from the misses on the original file, recalls 100% of the bans in those 30 and blocks one allowed listing.
 
 | Clear listings (130) | Precision | Recall | False-positive rate |
 |---|---|---|---|
@@ -10,7 +12,7 @@ The headline result is prompt v2 on Claude Haiku 5.5. On the 130 clear listings 
 | Claude, prompt v2 | 100% | 98.3% | 0% |
 | Claude, prompt v1 | 100% | 100% | 0% |
 
-Block is the positive class. A resume line that matches these numbers: built an evaluation harness for Swapstr listing moderation, 180 labeled listings, and measured a Claude classifier against the production keyword filter on precision, recall, and false-positive rate.
+Block is the positive class.
 
 Re-score the published numbers with `python -m src.rescore`. That reruns the keyword filter, Haiku prompt v1, and Haiku prompt v2 from the saved replies, then checks the clear-set floors. It does not call the API.
 
