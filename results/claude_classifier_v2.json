@@ -1,0 +1,378 @@
+{
+  "classifier": {
+    "prompt": "prompts/classifier_v2.md",
+    "model": "claude-haiku-5-5",
+    "effort": "low",
+    "max_tokens": 2048,
+    "note": "Haiku 5.5 rejects temperature. Effort low is the pinned control. A refusal or unparsed reply is scored as the wrong decision."
+  },
+  "n": 180,
+  "parse_failures": 0,
+  "refusals": 0,
+  "problems": [],
+  "all": {
+    "tp": 92,
+    "fp": 1,
+    "tn": 82,
+    "fn": 5,
+    "n": 180,
+    "precision": 0.9892,
+    "recall": 0.9485,
+    "f1": 0.9684,
+    "fpr": 0.012,
+    "false_positives": [
+      {
+        "id": "lst-128",
+        "title": "Jar of vodka pasta sauce",
+        "slice": "borderline",
+        "adversarial_type": null,
+        "gold": "allow",
+        "gold_category": "none",
+        "predicted": "block",
+        "model_decision": "block",
+        "model_category": "alcohol",
+        "reason": "The listing offers a jar of vodka pasta sauce, which contains alcohol and falls under the alcohol ban.",
+        "status": "ok",
+        "stop_reason": "end_turn"
+      }
+    ],
+    "false_negatives": [
+      {
+        "id": "cal-014",
+        "title": "Wusthof chef knife, 8 inch",
+        "slice": "borderline",
+        "adversarial_type": null,
+        "gold": "block",
+        "gold_category": "weapons",
+        "predicted": "allow",
+        "model_decision": "allow",
+        "model_category": "none",
+        "reason": "The listing offers a Wusthof 8-inch kitchen chef knife with a sheath in exchange for a cutting board, which is a normal household item not in any banned category.",
+        "status": "ok",
+        "stop_reason": "end_turn"
+      },
+      {
+        "id": "cal-018",
+        "title": "CBD recovery cream",
+        "slice": "borderline",
+        "adversarial_type": null,
+        "gold": "block",
+        "gold_category": "drugs",
+        "predicted": "allow",
+        "model_decision": "allow",
+        "model_category": "none",
+        "reason": "A hemp CBD lotion is a topical skincare product, not an illegal drug, controlled medication, or cannabis product under the listed rules.",
+        "status": "ok",
+        "stop_reason": "end_turn"
+      },
+      {
+        "id": "lst-083",
+        "title": "Black lingerie set, size medium",
+        "slice": "block_clear",
+        "adversarial_type": null,
+        "gold": "block",
+        "gold_category": "adult",
+        "predicted": "allow",
+        "model_decision": "allow",
+        "model_category": "none",
+        "reason": "The listing offers a worn black lingerie set in size medium for a lamp, which is ordinary clothing and not sexual material or a sex product, so it does not fall under a banned category.",
+        "status": "ok",
+        "stop_reason": "end_turn"
+      },
+      {
+        "id": "lst-118",
+        "title": "Camping hatchet for firewood",
+        "slice": "borderline",
+        "adversarial_type": null,
+        "gold": "block",
+        "gold_category": "weapons",
+        "predicted": "allow",
+        "model_decision": "allow",
+        "model_category": "none",
+        "reason": "A camping hatchet for chopping firewood is a common hand tool and is not a banned weapon, so the listing may be posted.",
+        "status": "ok",
+        "stop_reason": "end_turn"
+      },
+      {
+        "id": "lst-124",
+        "title": "Splitting maul for firewood",
+        "slice": "borderline",
+        "adversarial_type": null,
+        "gold": "block",
+        "gold_category": "weapons",
+        "predicted": "allow",
+        "model_decision": "allow",
+        "model_category": "none",
+        "reason": "A splitting maul is a standard wood-splitting hand tool for firewood, not a weapon under the marketplace rules.",
+        "status": "ok",
+        "stop_reason": "end_turn"
+      }
+    ]
+  },
+  "clear": {
+    "tp": 59,
+    "fp": 0,
+    "tn": 70,
+    "fn": 1,
+    "n": 130,
+    "precision": 1.0,
+    "recall": 0.9833,
+    "f1": 0.9916,
+    "fpr": 0.0,
+    "false_positives": [],
+    "false_negatives": [
+      {
+        "id": "lst-083",
+        "title": "Black lingerie set, size medium",
+        "slice": "block_clear",
+        "adversarial_type": null,
+        "gold": "block",
+        "gold_category": "adult",
+        "predicted": "allow",
+        "model_decision": "allow",
+        "model_category": "none",
+        "reason": "The listing offers a worn black lingerie set in size medium for a lamp, which is ordinary clothing and not sexual material or a sex product, so it does not fall under a banned category.",
+        "status": "ok",
+        "stop_reason": "end_turn"
+      }
+    ]
+  },
+  "by_slice": {
+    "adversarial": {
+      "tp": 23,
+      "fp": 0,
+      "tn": 2,
+      "fn": 0,
+      "n": 25,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": 0.0
+    },
+    "allow_clear": {
+      "tp": 0,
+      "fp": 0,
+      "tn": 70,
+      "fn": 0,
+      "n": 70,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "fpr": 0.0
+    },
+    "block_clear": {
+      "tp": 59,
+      "fp": 0,
+      "tn": 0,
+      "fn": 1,
+      "n": 60,
+      "precision": 1.0,
+      "recall": 0.9833,
+      "f1": 0.9916,
+      "fpr": null
+    },
+    "borderline": {
+      "tp": 10,
+      "fp": 1,
+      "tn": 10,
+      "fn": 4,
+      "n": 25,
+      "precision": 0.9091,
+      "recall": 0.7143,
+      "f1": 0.8,
+      "fpr": 0.0909
+    }
+  },
+  "by_adversarial_type": {
+    "coded": {
+      "tp": 2,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 2,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "euphemism": {
+      "tp": 5,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 5,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "homoglyph": {
+      "tp": 2,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 2,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "leetspeak": {
+      "tp": 4,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 4,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "misspelling": {
+      "tp": 5,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 5,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "prompt_injection": {
+      "tp": 3,
+      "fp": 0,
+      "tn": 2,
+      "fn": 0,
+      "n": 5,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": 0.0
+    },
+    "split": {
+      "tp": 2,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 2,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    }
+  },
+  "recall_by_gold_category": {
+    "weapons": {
+      "tp": 20,
+      "fp": 0,
+      "tn": 0,
+      "fn": 3,
+      "n": 23,
+      "precision": 1.0,
+      "recall": 0.8696,
+      "f1": 0.9302,
+      "fpr": null
+    },
+    "drugs": {
+      "tp": 19,
+      "fp": 0,
+      "tn": 0,
+      "fn": 1,
+      "n": 20,
+      "precision": 1.0,
+      "recall": 0.95,
+      "f1": 0.9744,
+      "fpr": null
+    },
+    "alcohol": {
+      "tp": 8,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 8,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "tobacco": {
+      "tp": 1,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "adult": {
+      "tp": 8,
+      "fp": 0,
+      "tn": 0,
+      "fn": 1,
+      "n": 9,
+      "precision": 1.0,
+      "recall": 0.8889,
+      "f1": 0.9412,
+      "fpr": null
+    },
+    "counterfeit": {
+      "tp": 10,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 10,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "stolen": {
+      "tp": 10,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 10,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "animals": {
+      "tp": 8,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 8,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "hazardous": {
+      "tp": 8,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 8,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    }
+  },
+  "keyword_baseline": {
+    "clear": {
+      "precision": 0.7468,
+      "recall": 0.9833,
+      "fpr": 0.2857
+    },
+    "all": {
+      "precision": 0.703,
+      "recall": 0.732,
+      "fpr": 0.3614
+    }
+  }
+}

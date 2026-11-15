@@ -1,0 +1,56 @@
+{
+  "source": "swapster-enhanced/src/utils/prohibitedItems.js",
+  "copied": "2026-11-09",
+  "note": "Keywords are the production substring list. Gold labels in the dataset follow moderator intent, not a substring hit. Alcohol and live animals are enforced because they are in this active list. Tobacco has no production keywords; nicotine and vapes are still banned.",
+  "categories": {
+    "weapons": [
+      "gun", "pistol", "rifle", "shotgun", "revolver", "firearm", "weapon", "knife", "sword", "blade", "ammo", "ammunition", "bullet", "bomb", "explosive",
+      "firework", "firecracker", "taser", "stun gun", "pepper spray", "mace", "brass knuckles", "nunchucks",
+      "bowie knife", "switchblade", "dagger", "machete", "crossbow", "bow", "arrow", "spear", "axe", "hatchet",
+      "glock", "ak-47", "ar-15", "beretta", "smith & wesson", "colt", "ruger", "sig sauer", "handgun"
+    ],
+    "drugs": [
+      "drug", "marijuana", "cannabis", "weed", "pot", "cocaine", "heroin", "meth", "methamphetamine",
+      "ecstasy", "mdma", "lsd", "acid", "mushroom", "psilocybin", "opium", "morphine", "oxycodone",
+      "adderall", "ritalin", "xanax", "valium", "percocet", "vicodin", "fentanyl", "crack", "crystal",
+      "speed", "amphetamine", "bath salts", "spice", "k2", "synthetic", "pill", "tablet", "capsule"
+    ],
+    "alcohol": [
+      "alcohol", "beer", "wine", "liquor", "vodka", "whiskey", "rum", "tequila", "gin", "brandy",
+      "champagne", "prosecco", "cider", "mead", "moonshine", "homebrew"
+    ],
+    "tobacco": [],
+    "adult": [
+      "porn", "pornography", "adult", "sex", "sexual", "intimate", "lingerie", "vibrator", "dildo",
+      "condom", "lubricant", "adult toy", "sex toy", "erotic", "nude", "naked"
+    ],
+    "counterfeit": [
+      "fake", "counterfeit", "replica", "knockoff", "bootleg", "pirated", "illegal copy",
+      "fake id", "fake passport", "fake driver license", "fake money", "counterfeit money"
+    ],
+    "stolen": [
+      "stolen", "hot", "found", "lost and found", "recovered", "unclaimed", "mystery box",
+      "blind box", "surprise package", "unknown contents"
+    ],
+    "animals": [
+      "pet", "dog", "cat", "bird", "fish", "hamster", "guinea pig", "rabbit", "ferret",
+      "snake", "lizard", "turtle", "tortoise", "horse", "pony", "cow", "pig", "chicken",
+      "duck", "goose", "live animal", "baby animal", "puppy", "kitten"
+    ],
+    "hazardous": [
+      "chemical", "acid", "poison", "toxic", "hazardous", "radioactive", "asbestos",
+      "lead paint", "mercury", "arsenic", "cyanide", "pesticide", "herbicide"
+    ]
+  },
+  "reasons": {
+    "weapons": "Weapons and dangerous items are not allowed for safety reasons.",
+    "drugs": "Drugs and controlled substances are illegal and not allowed.",
+    "alcohol": "Alcohol sales may be restricted in your area.",
+    "tobacco": "Nicotine, vapes, and tobacco are not allowed.",
+    "adult": "Adult content and inappropriate items are not allowed.",
+    "counterfeit": "Counterfeit and illegal items are not allowed.",
+    "stolen": "Stolen or suspicious items are not allowed.",
+    "animals": "Live animals require special permits and are not allowed.",
+    "hazardous": "Hazardous materials are dangerous and not allowed."
+  }
+}

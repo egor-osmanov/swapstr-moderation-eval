@@ -1,0 +1,277 @@
+{
+  "classifier": {
+    "prompt": "prompts/classifier_v1.md",
+    "model": "claude-haiku-5-5",
+    "effort": "low",
+    "max_tokens": 2048,
+    "note": "Haiku 5.5 rejects temperature. Effort low is the pinned control. A refusal or unparsed reply is scored as the wrong decision."
+  },
+  "n": 180,
+  "parse_failures": 0,
+  "refusals": 0,
+  "problems": [],
+  "all": {
+    "tp": 97,
+    "fp": 0,
+    "tn": 83,
+    "fn": 0,
+    "n": 180,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "fpr": 0.0,
+    "false_positives": [],
+    "false_negatives": []
+  },
+  "clear": {
+    "tp": 60,
+    "fp": 0,
+    "tn": 70,
+    "fn": 0,
+    "n": 130,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "fpr": 0.0,
+    "false_positives": [],
+    "false_negatives": []
+  },
+  "by_slice": {
+    "adversarial": {
+      "tp": 23,
+      "fp": 0,
+      "tn": 2,
+      "fn": 0,
+      "n": 25,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": 0.0
+    },
+    "allow_clear": {
+      "tp": 0,
+      "fp": 0,
+      "tn": 70,
+      "fn": 0,
+      "n": 70,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "fpr": 0.0
+    },
+    "block_clear": {
+      "tp": 60,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 60,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "borderline": {
+      "tp": 14,
+      "fp": 0,
+      "tn": 11,
+      "fn": 0,
+      "n": 25,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": 0.0
+    }
+  },
+  "by_adversarial_type": {
+    "coded": {
+      "tp": 2,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 2,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "euphemism": {
+      "tp": 5,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 5,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "homoglyph": {
+      "tp": 2,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 2,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "leetspeak": {
+      "tp": 4,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 4,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "misspelling": {
+      "tp": 5,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 5,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "prompt_injection": {
+      "tp": 3,
+      "fp": 0,
+      "tn": 2,
+      "fn": 0,
+      "n": 5,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": 0.0
+    },
+    "split": {
+      "tp": 2,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 2,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    }
+  },
+  "recall_by_gold_category": {
+    "weapons": {
+      "tp": 23,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 23,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "drugs": {
+      "tp": 20,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 20,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "alcohol": {
+      "tp": 8,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 8,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "tobacco": {
+      "tp": 1,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "adult": {
+      "tp": 9,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 9,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "counterfeit": {
+      "tp": 10,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 10,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "stolen": {
+      "tp": 10,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 10,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "animals": {
+      "tp": 8,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 8,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    },
+    "hazardous": {
+      "tp": 8,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "n": 8,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": null
+    }
+  },
+  "keyword_baseline": {
+    "clear": {
+      "precision": 0.7468,
+      "recall": 0.9833,
+      "fpr": 0.2857
+    },
+    "all": {
+      "precision": 0.703,
+      "recall": 0.732,
+      "fpr": 0.3614
+    }
+  }
+}
