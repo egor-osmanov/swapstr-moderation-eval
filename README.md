@@ -20,7 +20,7 @@ On 130 clear listings, prompt v2 on Claude Haiku matches the production keyword 
 
 Block is the positive class.
 
-Re-score the published numbers with `python -m src.rescore`. That reruns the keyword filter, Haiku prompt v1, and Haiku prompt v2 from the saved replies, then checks the clear-set floors. It does not call the API.
+Re-score the published numbers with `python -m src.rescore`. That reruns the keyword filter, Haiku prompt v1, and Haiku prompt v2 from the saved replies, then checks the clear-set floors. It does not rescore prompt v3, the Sonnet run, or the held-out file, and it does not call the API.
 
 ## Limitations
 
